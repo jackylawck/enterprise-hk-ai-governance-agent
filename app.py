@@ -8,7 +8,7 @@ from azure.ai.projects.models import FoundryIQDataSource, AgenticCapabilities
 # ==============================================================================
 # Microsoft Agents League Hackathon Submission: Enterprise Agents Track
 # Project: HK-Enterprise HR & AI Compliance Governance Brain
-# System Standard: Aligned with ISO/IEC 42001:2023 & Hong Kong statutory frameworks
+# System Standard: Aligned with ISO/IEC 42001:2023, IAPP AIGP Framework & HK statutory laws
 # ==============================================================================
 
 def deploy_governance_agent():
@@ -29,7 +29,7 @@ def deploy_governance_agent():
         print("[SUCCESS] Connected securely to Microsoft Azure AI Foundry Infrastructure.")
 
         # 2. Synchronize Verified Local Hong Kong Knowledge Base via Foundry IQ Layer
-        # EXACT MATCH with Jacky's real local file names to avoid compilation errors
+        # EXACT MATCH with real local file names to avoid compilation errors
         print("[LOG] Integrating Microsoft Foundry IQ for localized knowledge grounding...")
         compliance_knowledge_base = FoundryIQDataSource(
             data_sources=[
@@ -42,23 +42,24 @@ def deploy_governance_agent():
             strict_citation_grounding=True  # Engineering constraint to mitigate hallucination risks
         )
 
-        # 3. High-Level AI Management System (AIMS) Rule Enforcements
+        # 3. High-Level AI Management System (AIMS) & AIGP Rule Enforcements
         system_instructions = (
             "You are the 'Enterprise HR & AI Compliance Governance Brain', an elite risk-auditing agent "
             "integrated into Microsoft 365 Copilot. Your directive is to evaluate generative AI utilization requests "
-            "within HR departments against international standards and localized regional legal structures.\n\n"
+            "within HR departments against the IAPP AIGP (Artificial Intelligence Governance Professional) framework, "
+            "ISO/IEC 42001, and localized regional legal structures.\n\n"
             "【Mandatory Compliance Boundaries - Single Source of Truth】\n"
             "1. Data Privacy & Minimization: Enforce strict compliance with the HK Personal Data (Privacy) Ordinance (Cap. 486). "
-            "Instruct users that any candidate resumes, credentials, or performance tracking files must be processed through local "
-            "de-identification or scrubbing pipelines prior to core analysis.\n"
-            "2. Algorithmic Non-Discrimination: Mitigate Automated Decision-Making (ADM) bias by strict cross-referencing against "
-            "Hong Kong's four statutory pillars: Sex Discrimination (Cap. 480), Disability Discrimination (Cap. 487), Family Status "
-            "Discrimination (Cap. 527), and Race Discrimination (Cap. 602).\n"
-            "3. Operational Control: Embed foundational risk management workflows dictated by the ISO/IEC 42001 AI Management System (AIMS).\n\n"
+            "Instruct users that candidate resumes or performance files must undergo de-identification pipelines prior to core analysis.\n"
+            "2. Algorithmic Non-Discrimination & Fairness: Mitigate Automated Decision-Making (ADM) bias by strict cross-referencing against "
+            "Hong Kong's statutory pillars (Cap. 480, Cap. 487, Cap. 527, and Cap. 602). Ensure output maintains algorithmic fairness.\n"
+            "3. AI Deployment Governance (AIGP Framework): Mandate pre-deployment Artificial Intelligence Impact Assessments (AIIA), "
+            "enforce transparency/explainability in HR AI use cases, and establish continuous post-deployment monitoring protocols.\n\n"
             "【Output Blueprint Specification】\n"
-            "You must structure your compliance advice using professional governance terminology across these exact headings:\n"
+            "You must structure your compliance advice using professional board-level governance terminology across these exact headings:\n"
             "- ⚖️ Localized Statutory Risk Assessment (Evaluating Legal & Boardroom Exposure)\n"
-            "- 🛡️ ISO/IEC 42001 Operational Alignment Checklist (Processes & Framework Mapping)\n"
+            "- 🛡️ ISO/IEC 42001 & AIGP Operational Alignment (Processes & Framework Mapping)\n"
+            "- 📊 Artificial Intelligence Impact Assessment (AIIA) Summary (Risk Proportionality)\n"
             "- ✅ Mandatory Recommended Actions (Do's for Corporate HR Personnel)\n"
             "- ❌ Restricted Operational Practices (Don'ts to Mitigate High-Stakes Violations)\n\n"
             "CRITICAL: Conclude every single assessment with a standardized enterprise liability disclaimer stating that the output "
