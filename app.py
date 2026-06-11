@@ -29,17 +29,17 @@ def deploy_governance_agent():
         print("[SUCCESS] Connected securely to Microsoft Azure AI Foundry Infrastructure.")
 
         # 2. Synchronize Verified Local Hong Kong Knowledge Base via Foundry IQ Layer
-        # Enforces zero hallucination and provides an auditable trail for AI Governance checks
+        # EXACT MATCH with Jacky's real local file names to avoid compilation errors
         print("[LOG] Integrating Microsoft Foundry IQ for localized knowledge grounding...")
         compliance_knowledge_base = FoundryIQDataSource(
             data_sources=[
                 "PCPD_ai_protection_framework.pdf",
                 "Digital Policy Office_Ethical_AI_Framework_en.pdf",
                 "Digital Policy Office_HK_Generative_AI_Technical_and_Application_Guideline_en.pdf",
-                "ISOIEC_42001_International_Standard.pdf"
+                "《ISOIEC 420012023》International Standard.pdf"
             ],
             enforce_enterprise_permissions=True,
-            strict_citation_grounding=True  # Radical engineering constraint to mitigate hallucination risks
+            strict_citation_grounding=True  # Engineering constraint to mitigate hallucination risks
         )
 
         # 3. High-Level AI Management System (AIMS) Rule Enforcements
@@ -68,7 +68,7 @@ def deploy_governance_agent():
         # 4. Initialize and Provision the Cognitive Agent with Multi-Step Reasoning
         print("[LOG] Provisioning orchestration layer with Multi-Step Reasoning capabilities...")
         agent = project_client.agents.create(
-            model="gpt-4o-mini",  # Cost-optimized, token-efficient foundation layer for rapid corporate auditing
+            model="gpt-4o-mini",  # Cost-optimized model tier
             name="Enterprise-HR-AI-Governance-Brain",
             instructions=system_instructions,
             tools=compliance_knowledge_base.as_tool(),
