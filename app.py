@@ -53,7 +53,7 @@ with st.sidebar:
     st.warning("⚠️ 資源狀態: 由於使用免費開源端點，本地 PDF 知識庫 (Knowledge Base) 暫時停用，將依賴模型預訓練知識及系統提示詞進行推理。")
 
 # 5. 用戶互動區
-st.markdown("### 📝 提交 HR AI 部署方案進行合規審計")
+st.markdown("### 📝 提交方案進行合規審計")
 default_query = "Our HR team wants to use an AI tool to automatically screen 500 candidate CVs and rank them by suitability score. What are the compliance requirements under HK law?"
 user_input = st.text_area("描述您的 AI 使用案例 (Use Case)：", value=default_query, height=100)
 
