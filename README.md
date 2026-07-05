@@ -36,7 +36,11 @@ Built with reliability, reproducibility, and production safety in mind:
 ---
 
 ## 🚀 Setup & Execution
+### For the Active Sandbox Lite (`app.py`):
+1. Configure your Hugging Face API key in Streamlit Secrets (`HF_TOKEN`).
+2. Deploy directly via Streamlit Cloud for immediate web UI access.
 
+### For the Azure Gold Standard (`app_azure_backup.py`):
 ### 1. Environment Variables Configuration
 The infrastructure client utilizes explicit environment variable injection to prevent hardcoded credentials:
 ```bash
