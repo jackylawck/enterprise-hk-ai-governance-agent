@@ -9,9 +9,9 @@ import requests
 # ==============================================================================
 
 # 1. 網頁介面與標題設定
-st.set_page_config(page_title="HR AI Governance Brain (Lite)", page_icon="🛡️", layout="wide")
-st.title("🛡️ Enterprise HR & AI Compliance Governance Brain [Sandbox Lite]")
-st.subheader("資深合規與組織變革沙盒 (Open-Source Proof-of-Concept)")
+st.set_page_config(page_title="HK AI Governance Brain (Lite)", page_icon="🛡️", layout="wide")
+st.title("🛡️ Hong Kong AI Compliance Governance Brain [Sandbox Lite]")
+st.subheader("香港人工智能治理沙盒 (Open-Source Proof-of-Concept)")
 st.markdown("---")
 
 # 2. 獲取 Hugging Face 密鑰 (Secrets Vault)
