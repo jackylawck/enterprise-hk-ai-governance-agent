@@ -5,7 +5,7 @@ import requests
 # Microsoft Agents League Hackathon (Adapted for Open-Source Sandbox)
 # Project: HK-Enterprise HR & AI Compliance Governance Brain
 # System Standard: ISO/IEC 42001:2023 | IAPP AIGP | HK Statutory Law
-# Powered by: Streamlit & Hugging Face (Meta Llama-3)
+# Powered by: Streamlit & Hugging Face (Qwen 2.5)
 # ==============================================================================
 
 # 1. 網頁介面與標題設定
@@ -21,7 +21,8 @@ except KeyError:
     st.error("🚨 [CONFIG ERROR] 找不到 HF_TOKEN。請確保已在 Streamlit Secrets 中設定。")
     st.stop()
 
-API_URL = "https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct"
+# 👉 核心升級：改用免審批、速度極快且中文理解極強的 Qwen 2.5 開源模型
+API_URL = "https://api-inference.huggingface.co/models/Qwen/Qwen2.5-7B-Instruct"
 HEADERS = {"Authorization": f"Bearer {hf_token}"}
 
 # 3. 完美移植你的高階系統管治提示詞 (System Instructions)
@@ -49,7 +50,7 @@ SYSTEM_INSTRUCTIONS = (
 # 4. 側邊欄狀態顯示
 with st.sidebar:
     st.success("✅ 系統狀態: 運行中 (SECURE)")
-    st.info("🧠 驅動引擎: Meta Llama-3-8B-Instruct")
+    st.info("🧠 驅動引擎: Qwen-2.5-7B-Instruct")
     st.warning("⚠️ 資源狀態: 由於使用免費開源端點，本地 PDF 知識庫 (Knowledge Base) 暫時停用，將依賴模型預訓練知識及系統提示詞進行推理。")
 
 # 5. 用戶互動區
@@ -61,14 +62,14 @@ if st.button("🚀 運行治理審計分析 (Run Compliance Audit)", type="prima
     if user_input:
         with st.spinner("AI 審計官正在評估架構風險，請稍候..."):
             
-            # 使用 Llama-3 的特定 Prompt 格式，將系統提示詞與用戶輸入封裝
-            prompt = f"<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n{SYSTEM_INSTRUCTIONS}<|eot_id|><|start_header_id|>user<|end_header_id|>\n{user_input}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n"
+            # 使用 Qwen 的專屬 ChatML Prompt 格式
+            prompt = f"<|im_start|>system\n{SYSTEM_INSTRUCTIONS}<|im_end|>\n<|im_start|>user\n{user_input}<|im_end|>\n<|im_start|>assistant\n"
             
             payload = {
                 "inputs": prompt,
                 "parameters": {
-                    "max_new_tokens": 1024, # 增加生成長度以容納完整的藍圖輸出
-                    "temperature": 0.3,     # 降低隨機性，讓合規建議更嚴謹
+                    "max_new_tokens": 1024, # 確保能輸出完整的報告
+                    "temperature": 0.3,     # 保持合規建議的嚴謹性
                     "return_full_text": False
                 }
             }
