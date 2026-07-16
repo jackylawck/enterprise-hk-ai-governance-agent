@@ -24,11 +24,7 @@ Designed and architected from a corporate governance perspective, this agent enf
 Built with reliability, reproducibility, and production safety in mind:
 
 * **Orchestration**: Natively powered by the latest `azure-ai-projects` SDK Client Core (`AIProjectClient`).
-* **Knowledge Grounding (RAG)**: Uses the official Microsoft `FileSearchTool` integrated with a secure `VectorStore` to index the local single source of truth (SSoT):
-    * *PCPD Artificial Intelligence: Personal Data Protection Framework*
-    * *Digital Policy Office: Ethical Artificial Intelligence Framework*
-    * *Digital Policy Office: Hong Kong Generative AI Technical and Application Guideline*
-    * *ISO/IEC 42001:2023 International Standard Spec*
+* **Knowledge Grounding (RAG - Bring Your Own License)**: Uses the official Microsoft `FileSearchTool` integrated with a secure `VectorStore` to index the single source of truth (SSoT). 
 * **Core System Guardrails**: Strict adherence to Hong Kong's anti-discrimination statutory pillars (Cap. 480, 487, 527, 602) is hardcoded directly into the agent's `SYSTEM_INSTRUCTIONS` prompt, ensuring baseline algorithmic fairness before RAG retrieval.
 * **Reasoning Engine**: Defaulted to enterprise-grade `gpt-4o` for deep multi-step compliance reasoning.
 * **Post-Deployment Self-Test**: Equipped with a robust `run_demo_query` hook that executes an automated end-to-end smoke test upon successful cloud provisioning.
@@ -37,8 +33,15 @@ Built with reliability, reproducibility, and production safety in mind:
 
 ## 🚀 Setup & Execution
 
-### 1. Environment Variables Configuration
-The infrastructure client utilizes explicit environment variable injection to prevent hardcoded credentials and ensure proper access control boundaries:
+### 1. Knowledge-Base Setup (Compliance & BYOL Policy)
+This repository does not redistribute copyrighted standards or protected statutory PDF documents. To run the RAG grounding pipeline, users must obtain authorised copies of the applicable documents and place them locally in your configured directory:
+* *ISO/IEC 42001:2023 International Standard Spec*
+* *PCPD Artificial Intelligence: Personal Data Protection Framework*
+* *Digital Policy Office: Ethical Artificial Intelligence Framework*
+* *Digital Policy Office: Hong Kong Generative AI Technical and Application Guideline*
+
+### 2. Environment Variables Configuration
+The infrastructure client utilizes explicit environment variable injection to prevent hardcoded credentials:
 ```bash
 export PROJECT_ENDPOINT="https://<your-resource-name>[.services.ai.azure.com/api/projects/](https://.services.ai.azure.com/api/projects/)<your-project-name>"
-export MODEL_DEPLOYMENT_NAME="gpt-4o"operational deployment.
+export MODEL_DEPLOYMENT_NAME="gpt-4o"
